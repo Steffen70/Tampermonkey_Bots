@@ -75,8 +75,8 @@ async function awaitDrop() {
     if (timeUntilDrop === 0)
         return selectSize();
 
-    else if (timeUntilDrop > 30) {
-        const sleepTime = (timeUntilDrop - 30) * 1000;
+    else if (timeUntilDrop > 60) {
+        const sleepTime = (timeUntilDrop - 60) * 1000;
         console.log(sleepTime + 'ms')
         await sleep(sleepTime);
     }
