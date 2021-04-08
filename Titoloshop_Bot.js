@@ -75,8 +75,8 @@ async function awaitDrop() {
     if (timeUntilDrop === 0)
         return selectSize();
 
-    else if (timeUntilDrop > 60) {
-        const sleepTime = (timeUntilDrop - 60) * 1000;
+    else if (timeUntilDrop > 10) {
+        const sleepTime = (timeUntilDrop - 10) * 1000;
         console.log(sleepTime + 'ms')
         await sleep(sleepTime);
     }
@@ -94,6 +94,9 @@ async function getTimeUntilDropInSeconds() {
     const dropTime = matches.reduce((a, x) => ({ ...a, [x[2]]: parseInt(x[1]) }), {});
 
     let seconds = 0;
+    if(dropTime['s'] === undefined)
+        dropTime['s'] = 60;
+
     for (const [key, value] of Object.entries(dropTime))
         seconds += convertToSeconds[key] * value;
 
